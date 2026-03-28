@@ -1,0 +1,1 @@
+/Users/mars112/code/coding_test/rust/target/debug/rust: /Users/mars112/code/coding_test/rust/script/1/1245.rs /Users/mars112/code/coding_test/rust/script/1/2000.rs /Users/mars112/code/coding_test/rust/script/1/3.rs /Users/mars112/code/coding_test/rust/script/2/2000.rs /Users/mars112/code/coding_test/rust/src/main.rs
