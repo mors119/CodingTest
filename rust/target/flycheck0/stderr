@@ -1,12 +1,52 @@
-   0.003632542s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint: stale: changed "/Users/mars112/code/coding_test/rust/src/main.rs"
-   0.003642708s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint:           (vs) "/Users/mars112/code/coding_test/rust/target/debug/.fingerprint/rust-dbe7687b58b42b48/dep-bin-rust"
-   0.003645083s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1774726246, nanos: 440980781 } < FileTime { seconds: 1774726253, nanos: 38452432 }
-   0.003713250s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint: fingerprint dirty for rust v0.1.0 (/Users/mars112/code/coding_test/rust)/Check { test: false }/TargetInner { name: "rust", doc: true, ..: with_path("/Users/mars112/code/coding_test/rust/src/main.rs", Edition2024) }
-   0.003721500s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/Users/mars112/code/coding_test/rust/target/debug/.fingerprint/rust-dbe7687b58b42b48/dep-bin-rust", reference_mtime: FileTime { seconds: 1774726246, nanos: 440980781 }, stale: "/Users/mars112/code/coding_test/rust/src/main.rs", stale_mtime: FileTime { seconds: 1774726253, nanos: 38452432 } }))
-   0.003903417s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint: stale: changed "/Users/mars112/code/coding_test/rust/src/main.rs"
-   0.003907833s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint:           (vs) "/Users/mars112/code/coding_test/rust/target/debug/.fingerprint/rust-56381a13298be3d9/dep-test-bin-rust"
-   0.003909750s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 1774726246, nanos: 440979031 } < FileTime { seconds: 1774726253, nanos: 38452432 }
-   0.003968208s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint: fingerprint dirty for rust v0.1.0 (/Users/mars112/code/coding_test/rust)/Check { test: true }/TargetInner { name: "rust", doc: true, ..: with_path("/Users/mars112/code/coding_test/rust/src/main.rs", Edition2024) }
-   0.003973375s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="rust"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "/Users/mars112/code/coding_test/rust/target/debug/.fingerprint/rust-56381a13298be3d9/dep-test-bin-rust", reference_mtime: FileTime { seconds: 1774726246, nanos: 440979031 }, stale: "/Users/mars112/code/coding_test/rust/src/main.rs", stale_mtime: FileTime { seconds: 1774726253, nanos: 38452432 } }))
+   0.004375917s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="p1_7289"}: cargo::core::compiler::fingerprint: fingerprint error for rust v0.1.0 (/Users/mars112/code/coding_test/rust)/Check { test: false }/TargetInner { name: "p1_7289", doc: true, ..: with_path("/Users/mars112/code/coding_test/rust/src/bin/p1_7289.rs", Edition2024) }
+   0.004390292s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="p1_7289"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/mars112/code/coding_test/rust/target/debug/.fingerprint/rust-a44b0bf8784a4e68/bin-p1_7289`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: std::backtrace::Backtrace::capture
+   2: cargo_util::paths::read_bytes
+   3: cargo_util::paths::read
+   4: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   5: cargo::core::compiler::fingerprint::prepare_target
+   6: cargo::core::compiler::compile
+   7: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   8: cargo::ops::cargo_compile::compile_ws
+   9: cargo::ops::cargo_compile::compile_with_exec
+  10: cargo::ops::cargo_compile::compile
+  11: cargo::commands::check::exec
+  12: <cargo::cli::Exec>::exec
+  13: cargo::main
+  14: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  15: std::rt::lang_start::<()>::{closure#0}
+  16: std::rt::lang_start_internal
+  17: _main
+   0.006675084s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="p1_7289"}: cargo::core::compiler::fingerprint: fingerprint error for rust v0.1.0 (/Users/mars112/code/coding_test/rust)/Check { test: true }/TargetInner { name: "p1_7289", doc: true, ..: with_path("/Users/mars112/code/coding_test/rust/src/bin/p1_7289.rs", Edition2024) }
+   0.006681209s  INFO prepare_target{force=false package_id=rust v0.1.0 (/Users/mars112/code/coding_test/rust) target="p1_7289"}: cargo::core::compiler::fingerprint:     err: failed to read `/Users/mars112/code/coding_test/rust/target/debug/.fingerprint/rust-2ef5111e16b296e1/test-bin-p1_7289`
+
+Caused by:
+    No such file or directory (os error 2)
+
+Stack backtrace:
+   0: std::backtrace::Backtrace::create
+   1: std::backtrace::Backtrace::capture
+   2: cargo_util::paths::read_bytes
+   3: cargo_util::paths::read
+   4: cargo::core::compiler::fingerprint::_compare_old_fingerprint
+   5: cargo::core::compiler::fingerprint::prepare_target
+   6: cargo::core::compiler::compile
+   7: <cargo::core::compiler::build_runner::BuildRunner>::compile
+   8: cargo::ops::cargo_compile::compile_ws
+   9: cargo::ops::cargo_compile::compile_with_exec
+  10: cargo::ops::cargo_compile::compile
+  11: cargo::commands::check::exec
+  12: <cargo::cli::Exec>::exec
+  13: cargo::main
+  14: std::sys::backtrace::__rust_begin_short_backtrace::<fn(), ()>
+  15: std::rt::lang_start::<()>::{closure#0}
+  16: std::rt::lang_start_internal
+  17: _main
     Checking rust v0.1.0 (/Users/mars112/code/coding_test/rust)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.05s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.03s
