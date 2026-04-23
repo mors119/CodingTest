@@ -12,8 +12,8 @@ public class Main {
 
         long rs = 0;
 
-        for (int i = 0; i < str.length; i++) {
-            rs += Long.parseLong(str[i]);
+        for (String str1 : str) {
+            rs += Long.parseLong(str1);
         }
 
         System.out.println(rs);
