@@ -2,7 +2,6 @@ package algorithm.common;
 // javac algorithm/common/Max3.java
 // java algorithm/common/Max3
 
-
 import java.io.IOException;
 import java.util.Scanner;
 
