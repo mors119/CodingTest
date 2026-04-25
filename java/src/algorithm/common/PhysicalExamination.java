@@ -8,6 +8,23 @@ class PhysicalExamination {
 
     static final int VMAX = 21;
 
+    class Id {
+        private static int counter = 0;
+        private int id;
+
+        public Id() {
+            id = ++counter;
+        }
+
+        public static int getCounter() {
+            return counter;
+        }
+
+        public int getId() {
+            return id;
+        }
+    }
+
     static class YMD {
         int y;
         int m;
@@ -78,5 +95,18 @@ class PhysicalExamination {
         for(int i = 0; i < VMAX; i++) {
             System.out.printf("%3.1f~: %s \n", i / 10.0, "*".repeat(vdist[i]));
         }
+
+        // 객체는 외부부터 접근가능하기 때문에 static이 아닌 inner class로 만들기 위해서는 바깥부터 접근
+        // static class = "바깥 클래스 인스턴스 없이도 생성 가능한 중첩 클래스"
+        PhysicalExamination outer = new PhysicalExamination();
+
+        Id a = outer.new Id();
+        Id b = outer.new Id();
+
+        System.out.println("a의 아이디: " + a.getId());
+        System.out.println("b의 아이디: " + b.getId());
+
+        System.out.println("부여한 아이디의 개수" + Id.getCounter());
+        System.out.println("부여한 아이디의 개수" + Id.counter); // 같은 클래스 내부이므로 접근 가능
     }
 }
