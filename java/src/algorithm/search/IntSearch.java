@@ -22,7 +22,7 @@ public class IntSearch {
     }
 
     // 이진 탐색
-    static void binSearch(int[] x, int num, int key) {
+    static void binarySearch(int[] x, int num, int key) {
         int pl = 0;
         int pr = num - 1;
         int idx = -1;
@@ -39,7 +39,7 @@ public class IntSearch {
             }
         } while (pl <= pr);
 
-        // 이진 탐색 구현
+        // 이진 탐색 프린트 구현
         if(idx == -1) {
             System.out.println("숫자 없음");
         } else {
@@ -92,7 +92,7 @@ public class IntSearch {
 
         // seqSearch(x, num, key);
 
-        // binSearch(x, num, key);
+        // binarySearch(x, num, key);
 
         // java.util binSearch 이용하기
         int idx = Arrays.binarySearch(x, key);
