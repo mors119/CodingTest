@@ -8,7 +8,7 @@ find_ct_root() {
   local dir="$PWD"
 
   while [[ "$dir" != "/" ]]; do
-    if [[ -d "$dir/input" && ( -d "$dir/python" || -d "$dir/rust" || -d "$dir/node" || -d "$dir/java" ) ]]; then
+    if [[ -d "$dir/input" && ( -d "$dir/python" || -d "$dir/rust" || -d "$dir/node" || -d "$dir/java" || -d "$dir/c" ) ]]; then
       echo "$dir"
       return 0
     fi
@@ -470,4 +470,113 @@ javanew [폴더번호]/[문제번호]
 ```bash
 # javact 1/1245
 javact [폴더번호]/[문제번호]
+```
+
+# C
+
+### 기본 템플릿 생성
+
+```bash
+mkdir -p input
+mkdir -p c/script
+```
+
+### zsh 자동화 스크립트
+
+```zsh
+cat >> coding-test.zsh <<'OUTER'
+cct() {
+  if [[ $# -lt 1 ]]; then
+    echo "usage: cct <group/problem>"
+    echo "example: cct 1/1245"
+    return 1
+  fi
+
+  local root
+  root="$(find_ct_root)" || {
+    echo "coding-test project root not found"
+    echo "expected directories: ./c and ./input"
+    return 1
+  }
+
+  local problem="$1"
+  local script_path="$root/c/script/${problem}.c"
+  local input_path="$root/input/${problem}.txt"
+  local output_path="$root/c/bin/${problem}"
+
+  if [[ ! -f "$script_path" ]]; then
+    echo "c script not found: $script_path"
+    return 1
+  fi
+
+  if [[ ! -f "$input_path" ]]; then
+    echo "input file not found: $input_path"
+    return 1
+  fi
+
+  mkdir -p "$(dirname "$output_path")"
+
+  gcc "$script_path" -O2 -std=c11 -Wall -Wextra -o "$output_path" || return 1
+  "$output_path" < "$input_path"
+}
+
+cnew() {
+  if [[ $# -lt 1 ]]; then
+    echo "usage: cnew <group/problem>"
+    echo "example: cnew 1/2000"
+    return 1
+  fi
+
+  local root
+  root="$(find_ct_root)" || {
+    echo "coding-test project root not found"
+    echo "expected directories: ./c and ./input"
+    return 1
+  }
+
+  local problem="$1"
+  local script_path="$root/c/script/${problem}.c"
+  local input_path="$root/input/${problem}.txt"
+
+  mkdir -p "$(dirname "$script_path")"
+  mkdir -p "$(dirname "$input_path")"
+
+  if [[ ! -f "$script_path" ]]; then
+    cat > "$script_path" <<'CEOF'
+#include <stdio.h>
+
+int main(void) {
+
+    return 0;
+}
+CEOF
+    echo "created: $script_path"
+  else
+    echo "already exists: $script_path"
+  fi
+
+  if [[ ! -f "$input_path" ]]; then
+    touch "$input_path"
+    echo "created: $input_path"
+  else
+    echo "already exists: $input_path"
+  fi
+}
+OUTER
+
+source coding-test.zsh
+```
+
+### 문제 / 풀이 템플릿 생성
+
+```bash
+# cnew 1/1245
+cnew [폴더번호]/[문제번호]
+```
+
+### 정답 체크
+
+```bash
+# cct 1/1245
+cct [폴더번호]/[문제번호]
 ```
