@@ -8,8 +8,26 @@ import java.util.Scanner;
 
 class Shell {
 
-    static void shellSort(int[] a) {
-        for (int h = a.length / 2; h > 0; h /= 2) {
+    static void shellSort1(int[] a) {
+        for (int h = a.length / 2; h > 0; h /= 2) { // 간격을 점점 줄이기
+            for (int i = h; i < a.length; i++) { // h 간격으로 삽입 정렬
+                int j;
+                int tmp = a[i];
+                for (j = i - h; j >= 0 && a[j] > tmp; j -= h) {
+                    a[j + h] = a[j];
+                }
+                a[j + h] = tmp;
+            }
+        }
+    }
+
+    @SuppressWarnings("empty-statement")
+    static void shellSort2(int[] a) {
+        int h;
+        // 커누스 시퀀스를 이용해 최적의 갭 찾기
+        for (h = 1; h < a.length; h = h * 3 + 1);
+
+        for (; h > 0; h /= 3) {
             for (int i = h; i < a.length; i++) {
                 int j;
                 int tmp = a[i];
@@ -37,7 +55,7 @@ class Shell {
         }
         System.out.println();
 
-        shellSort(n);
+        shellSort2(n);
 
         for(int i = 0; i < n.length; i++) {
             System.out.print("a[" + i +  "] = " + n[i] + " / ");
