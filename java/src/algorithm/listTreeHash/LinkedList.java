@@ -1,6 +1,6 @@
-package algorithm.list;
-// javac algorithm/list/LinkedList.java
-// java algorithm/list/LinkedList
+package algorithm.listTreeHash;
+// javac algorithm/listTreeHash/LinkedList.java
+// java algorithm/listTreeHash/LinkedList
 
 import java.util.Comparator;
 
